@@ -33,24 +33,19 @@ router.post('/', async (req, res) => {
     }
 });
 
-//updating one
-router.patch('/:id', getprojects,async (req, res) => {
-    if (req.body.name != null){
-        res.projects_id.name = req.body.name
-    }
-    if (req.body.description != null){
-        res.projects_id.description = req.body.description
-    }
-    if (req.body.items_used != null){
-        res.projects_id.items_used = req.body.items_used
-    }
+//updating one project
+router.patch('/:id', async (req, res, next) => {
     try{
-        const updatedProjects = await res.projects_id.save()
-        res.json(updatedProjects)
+        const id = req.params.id
+        const updates = req.body
+
+        const result = await Projects.findByIdAndUpdate(id,updates)
+        res.json(result)
     } catch (err){
         res.status(400).json({ message: err.message })
     }
 });
+
 
 //deleting one
 router.delete('/:id', getprojects, async (req, res) => {
