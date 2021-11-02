@@ -1,0 +1,77 @@
+//to get list of all projects
+GET http://localhost:5000/projects
+
+###
+
+//to get a single project using id
+GET http://localhost:5000/projects/617ac76c9f43f0b1af9634aa
+
+###
+
+//to delete a project
+DELETE http://localhost:5000/projects/617bea1c2773effd052ce075
+
+###
+
+//to create a new project
+POST http://localhost:5000/projects
+Content-Type: application/json
+
+{
+    "name": "Python",
+    "description": "4th project created",
+    "items_used": {
+        "name": "Django",
+        "price": "3000",
+        "used_in_project": "Python"
+    }
+}
+
+###
+// to update a project
+PATCH http://localhost:5000/projects/617bea432773effd052ce078
+Content-Type: application/json
+
+{
+    "name": "Php"
+}
+
+###
+
+//to create a new item
+POST http://localhost:5000/items
+Content-Type: application/json
+
+{
+    "name": "ABC",
+    "price": "3000",
+    "used_in_project": "REST API Project"
+}
+
+###
+
+//get all items
+GET http://localhost:5000/items
+
+###
+
+//get one item
+GET http://localhost:5000/items/617ac76c9f43f0b1af9634aa
+###
+
+//delete one item
+DELETE http://localhost:5000/items/617bea1c2773effd052ce075
+
+###
+
+//update a item
+PATCH http://localhost:5000/items/617bea432773effd052ce078
+Content-Type: application/json
+
+{
+    "name": "Php_items"
+}
+###
+
+//get list of all items of a given project
+GET http://localhost:5000/project-items/61802c71c031deae21da31a6
